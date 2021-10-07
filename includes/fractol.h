@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 14:45:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/07 15:41:50 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,7 @@ typedef struct s_data
 
 void	ft_put_pixel(t_data *data, int x, int y, int color);
 void	ft_mandelbrot(t_data *data);
+void	ft_julia(t_data *data);
+void	ft_burning_ship(t_data *data);
 
 #endif

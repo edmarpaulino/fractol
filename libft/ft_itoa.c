@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edpaulin <edpaulin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 16:56:18 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/09/30 17:15:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/07 22:07:17 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,60 +21,31 @@
 *	The string representing the integer. NULL if the allocation fails.
 */
 
-static int	ft_intlen(int n)
+char	*ft_itoa(int n)
 {
-	int	len;
+	char	*str;
+	int		len;
 
-	len = 0;
-	while (n)
-	{
-		n /= 10;
-		++len;
-	}
-	return (len);
-}
-
-static char	*ft_convert(int n, char *str)
-{
-	int	len;
-
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	else if (n == 0)
+		return (ft_strdup("0"));
+	len = (int)ft_nbrlen(n, 10);
 	if (n < 0)
 	{
-		n *= -1;
-		len = (ft_intlen(n) + 2);
-		str = (char *)malloc(len * sizeof(*str));
-		if (!str)
-			return (NULL);
-		str[0] = '-';
+		n = -n;
+		++len;
 	}
-	else
-	{
-		len = (ft_intlen(n) + 1);
-		str = (char *)malloc(len * sizeof(*str));
-		if (!str)
-			return (NULL);
-	}
-	str[--len] = '\0';
+	str = (char *)malloc((len + 1) * sizeof(*str));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
 	while (n > 0)
 	{
 		str[--len] = (n % 10) + '0';
 		n /= 10;
 	}
-	return (str);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*str;
-
-	str = 0;
-	if (n < -2147483648 || n > 2147483647)
-		return (NULL);
-	if (n == -2147483648)
-		str = ft_strdup("-2147483648");
-	else if (n == 0)
-		str = ft_strdup("0");
-	else
-		str = ft_convert(n, str);
+	if (len > 0)
+		str[--len] = '-';
 	return (str);
 }

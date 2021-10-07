@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/03 17:17:10 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 20:34:34 by edpaulin         ###   ########.fr       */
+/*   Created: 2021/10/07 21:18:47 by edpaulin          #+#    #+#             */
+/*   Updated: 2021/10/07 22:07:08 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-*	DESCRIPTION
-*	Outputs the string ’s’ to the given file descriptor, followed by a newline.
-*/
-
-void	ft_putendl_fd(char *s, int fd)
+size_t	ft_nbrlen(ssize_t nbr, int base)
 {
-	if (s && fd >= 0)
+	size_t	len;
+
+	len = 0;
+	while (nbr != 0)
 	{
-		write(fd, s, ft_strlen(s));
-		write(fd, "\n", 1);
+		nbr /= base;
+		++len;
 	}
+	return (len);
 }

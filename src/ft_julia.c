@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:44:13 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 19:10:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/07 20:51:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	ft_julia(t_data *data)
 					ft_att_pixel(data, x, y, color);
 					break;
 				}
-				data->im.z = 2 * data->real.z * data->im.z + data->im.c;
-				data->real.z = data->real.pow2 - data->im.pow2 + data->real.c;
+				data->im.z = 2 * data->real.z * data->im.z + 0.77;
+				data->real.z = data->real.pow2 - data->im.pow2 - 0.08;
 				n++;
 			}
 			x++;

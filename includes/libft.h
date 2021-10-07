@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 09:42:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 19:07:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/07 22:06:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_strupper(char *str);
 void	ft_strlower(char *str);
+size_t	ft_strnlen(const char *str, size_t maxlen);
+size_t	ft_nbrlen(ssize_t nbr, int base);
 
 #endif

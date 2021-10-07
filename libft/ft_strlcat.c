@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edpaulin <edpaulin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/03 10:35:04 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/09/30 16:49:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/07 21:16:46 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	src_len;
 
 	src_len = (ft_strlen(src));
-	dst_len = 0;
-	while (dst[dst_len] && dst_len < dstsize)
-		++dst_len;
+	dst_len = ft_strnlen(dst, dstsize);
 	if (dstsize == dst_len)
 		return (src_len + dstsize);
 	dst += dst_len;

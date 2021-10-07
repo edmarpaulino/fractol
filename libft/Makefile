@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/07 19:07:03 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/07 22:13:15 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,9 @@ SRC				=		ft_isalpha.c \
 						ft_lstmap.c \
 						ft_strcmp.c \
 						ft_strupper.c \
-						ft_strlower.c
+						ft_strlower.c \
+						ft_strnlen.c \
+						ft_nbrlen.c
 
 HEADER_DIR		=		../includes
 
@@ -65,9 +67,8 @@ OBJ				=		$(SRC:.c=.o)
 
 OBJ_BONUS		=		$(SRC_BONUS:.c=.o)
 
-CC				=		clang
-
-CFLAGS			=		-Wall -Wextra -Werror -fsanitize=address -g3
+CC				=		gcc
+CFLAGS			=		-Wall -Wextra -Werror
 
 MAIN			=		main.c
 
@@ -78,18 +79,18 @@ MAIN			=		main.c
 all:		$(NAME)
 
 bonus:		$(NAME) $(OBJ_BONUS)
-	ar cr $(NAME) $(OBJ) $(OBJ_BONUS)
+			ar cr $(NAME) $(OBJ) $(OBJ_BONUS)
 
 %.o:		%.c
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER_DIR)
+			$(CC) $(CFLAGS) -c $< -o $@ -I $(HEADER_DIR)
 
 $(NAME):	$(OBJ)
-	ar cr $(NAME) $(OBJ)
+			ar cr $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS)
+			rm -f $(OBJ) $(OBJ_BONUS)
 
 fclean:		clean
-	rm -f $(NAME)
+			rm -f $(NAME)
 
 re:			fclean all

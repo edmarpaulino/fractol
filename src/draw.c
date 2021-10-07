@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:14:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/06 14:59:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:48:18 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // 1 -> big endian
 // 0 -> little endian
 
-void	ft_put_pixel(t_data *data, int x, int y, int color)
+void	ft_att_pixel(t_data *data, int x, int y, int color)
 {
 	int	pixel;
 

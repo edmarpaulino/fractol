@@ -6,74 +6,76 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/07 17:02:18 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/07 18:46:38 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-DEFAULT_GOAL:=  all
+.DEFAULT_GOAL	=	all
 
-NAME		=	fractol
+NAME			=	fractol
 
-SRC_DIR		=	./src
-OBJ_DIR		=	./obj
-INC_DIR		=	./includes
-LIB_DIR		=	./lib
+SRC_DIR			=	./src
+OBJ_DIR			=	./obj
+INC_DIR			=	./includes
+LIB_DIR			=	./lib
 
-SYS_CAL		=	-lXext -lX11 -lm
+SYS_CAL			=	-l Xext -l X11 -l m
 
-MLX_DIR		=	./minilibx
-MLX_LIB		=	mlx_Linux
-MLX_CAL		=	-L${MLX_DIR} -l${MLX_LIB}
+MLX_DIR			=	./minilibx
+MLX_LIB			=	mlx_Linux
+MLX_CAL			=	-L ${MLX_DIR} -l ${MLX_LIB}
 
-FT_DIR		=	./libft
-FT_LIB		=	ft
-FT_CAL		=	-L${FT_DIR} -l${FT_LIB}
+FT_DIR			=	./libft
+FT_LIB			=	ft
+FT_CAL			=	-L ${FT_DIR} -l ${FT_LIB}
 
-CC			=	clang
-CFLAGS		=	-Wall -Wextra -Werror -O3
-LIBS		=	${MLX_CAL} ${FT_CAL} ${SYS_CAL}
-INCS		=	-I${MLX_DIR} -I${INC_DIR} -I${FT_DIR}
-SAN			=	-g3 -fsanitize=address
+CC				=	clang
+CFLAGS			=	-Wall -Wextra -Werror -O3
+LIBS			=	${MLX_CAL} ${FT_CAL} ${SYS_CAL}
+INCS			=	-I ${MLX_DIR} -I ${INC_DIR} -I ${FT_DIR}
+SAN				=	-g3 -fsanitize=address
 
-SRCS		=	main.c \
-				draw.c \
-				fractals.c
-OBJS		=	${addprefix ${OBJ_DIR}/,${SRCS:.c=.o}}
+SRCS			=	main.c \
+					draw.c \
+					ft_mandelbrot.c \
+					ft_julia.c \
+					ft_burning_ship.c
+OBJS			=	${addprefix ${OBJ_DIR}/,${SRCS:.c=.o}}
 
-RM			=	@rm -rf
+RM				=	rm -rf
 
-DIR_GUARD	=	@mkdir -p ${@D}
+DIR_GUARD		=	mkdir -p ${@D}
 
 ${OBJ_DIR}/%.o:	${SRC_DIR}/%.c
-			${DIR_GUARD}
-			${CC} ${CFLAGS} ${INCS} -c $< -o $@
+				${DIR_GUARD}
+				${CC} ${CFLAGS} ${INCS} -c $< -o $@
 
-${NAME}:	${OBJS}
-			make -C ${FT_DIR} all
-			make -C ${MLX_DIR} all
-			${CC} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
+${NAME}:		${OBJS}
+				make -C ${FT_DIR} all
+				make -C ${MLX_DIR} all
+				${CC} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
-all:		${NAME}
+all:			${NAME}
 
-bonus:		${NAME}
+bonus:			${NAME}
 
-san:		${OBJS}
-			make -C ${FT_DIR} all
-			make -C ${MLX_DIR} all
-			${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
+san:			${OBJS}
+				make -C ${FT_DIR} all
+				make -C ${MLX_DIR} all
+				${CC} ${SAN} ${CFLAGS} ${OBJS} ${LIBS} ${INCS} -o ${NAME}
 
 clean:
-			${RM} ${OBJ_DIR}
-			make -C ${MLX_DIR} $@
-			make -C ${FT_DIR} $@
+				${RM} ${OBJ_DIR}
+				make -C ${MLX_DIR} $@
+				make -C ${FT_DIR} $@
 
-fclean: 	clean
-			${RM} ${NAME}
-			make -C ${FT_DIR} $@
+fclean: 		clean
+				${RM} ${NAME}
+				make -C ${FT_DIR} $@
 
-re:			fclean all
+re:				fclean all
 
-.PHONY:		all bonus san clean fclean re
+.PHONY:			all bonus san clean fclean re
 
 # NAME			=	libfractol.a
 # EXEC			=	fractol

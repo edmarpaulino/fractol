@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/06 11:19:35 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/07 19:07:03 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,10 @@ SRC				=		ft_isalpha.c \
 						ft_lstdelone.c \
 						ft_lstclear.c \
 						ft_lstiter.c \
-						ft_lstmap.c
+						ft_lstmap.c \
+						ft_strcmp.c \
+						ft_strupper.c \
+						ft_strlower.c
 
 HEADER_DIR		=		../includes
 

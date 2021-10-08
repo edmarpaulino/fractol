@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 00:03:06 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 00:38:16 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_const	c;
 	char	**str;
 	int		i;
+	int		count;
 
 	if (argc < 2)
 		return (1);
@@ -36,24 +37,35 @@ int	main(int argc, char **argv)
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 		mlx_loop(data.mlx);
 	}
-	else if (!ft_strcmp(argv[1], "julia") && argc == 3)
+	else if (!ft_strcmp(argv[1], "julia") \
+			&& argc == 3 \
+			&& ft_lastchr(argv[2]) == 'i') // fix this
 	{
-		str = ft_split(argv[2], ' ');
 		i = 0;
-		while (str[i])
-			i++;
-		if (i == 2 && ft_lastchr(str[1]) == 'i')
+		count = 0;
+		while (argv[2][i])
 		{
-			printf("str[0]:	%s\nstr[1]:	%s\n", str[0], str[1]);
+			if (argv[2][i] != ' ' \
+				&& (argv[2][i + 1] == ' ' || argv[2][i + 1] == '\0'))
+				++count;
+			++i;
+		}
+		if (count == 2)
+		{
+			str = ft_split(argv[2], ' ');
 			c.real = ft_atof(str[0]);
 			c.im = ft_atof(str[1]);
 			ft_init_julia(&data, &c);
 			mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 			mlx_loop(data.mlx);
+			i = 0;
+			while (str[i])
+			{
+				free(str[i]);
+				i++;
+			}
+			free(str);
 		}
-		while (i--)
-			free(str[i]);
-		free(str);
 	}
 	else if (!ft_strcmp(argv[1], "julia") \
 			&& argc == 4 \

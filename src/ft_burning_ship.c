@@ -6,56 +6,54 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:44:11 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 19:10:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:53:40 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_burning_ship(t_data *data)
+void	ft_init_burning_ship(t_data *data)
 {
-	double	max_iterations;
-	double	y;
-	double	x;
-	double	n;
-	int		color;
-
 	data->real.min = -1.5;
 	data->real.max = data->real.min + 2.5;
 	data->im.min = -1.2;
 	data->im.max = data->im.min + \
 					(data->real.max - data->real.min) * \
 					data->height / data->width;
-	data->real.factor= (data->real.max - data->real.min) / (data->width - 1);
+	data->im.min = -data->im.min;
+	data->im.max = -data->im.max;
+	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
 	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
-	max_iterations = 600;
-	y = 0;
-	while ((signed int)y < data->height)
+	data->img.max_i = 600;
+	data->img.y = -1;
+	data->img.x = -1;
+	ft_calc_burning_ship(data);
+}
+
+void	ft_calc_burning_ship(t_data *data)
+{
+	while (++data->img.y < data->height)
 	{
-		data->im.c = data->im.max - y * data->im.factor;
-		x = 0;
-		while ((signed int)x < data->width)
+		data->im.c = data->im.max - data->img.y * data->im.factor;
+		data->img.x = -1;
+		while (++data->img.x < data->width)
 		{
-			data->real.c = data->real.min + x * data->real.factor;
+			data->real.c = data->real.min + data->img.x * data->real.factor;
 			data->real.z = data->real.c;
 			data->im.z = data->im.c;
-			n = 0;
-			while (n < max_iterations)
+			data->img.i = -1;
+			while (++data->img.i < data->img.max_i)
 			{
 				data->real.pow2 = data->real.z * data->real.z;
 				data->im.pow2 = data->im.z * data->im.z;
-				if (data->real.pow2 + data->im.pow2 > 4)
+				if (data->real.pow2 + data->im.pow2 > 6)
 				{
-					color = (0x00111111 + (int)n * 8) << 16;
-					ft_att_pixel(data, x, y, color);
-					break;
+					ft_att_pixel(data, ft_get_color(data->img.i));
+					break ;
 				}
 				data->im.z = fabs(2 * data->real.z * data->im.z) + data->im.c;
 				data->real.z = data->real.pow2 - data->im.pow2 + data->real.c;
-				n++;
 			}
-			x++;
 		}
-		y++;
 	}
 }

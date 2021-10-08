@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 19:14:51 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/08 22:54:07 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
-
-typedef struct s_color
-{
-	int	a;
-	int	r;
-	int	g;
-	int	b;
-}				t_color;
 
 typedef struct s_calc
 {
@@ -45,7 +37,10 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
-	t_color	color;
+	int		x;
+	int		y;
+	int		i;
+	int		max_i;
 }				t_img;
 
 typedef struct s_data
@@ -60,9 +55,20 @@ typedef struct s_data
 	t_calc	im;
 }				t_data;
 
-void	ft_att_pixel(t_data *data, int x, int y, int color);
-void	ft_mandelbrot(t_data *data);
-void	ft_julia(t_data *data);
-void	ft_burning_ship(t_data *data);
+typedef struct s_const
+{
+	double	real;
+	double	im;
+}				t_const;
+
+void			ft_att_pixel(t_data *data, int color);
+void			ft_init_mandelbrot(t_data *data);
+void			ft_calc_mandelbrot(t_data *data);
+void			ft_init_julia(t_data *data, t_const *c);
+void			ft_calc_julia(t_data *data, t_const *c);
+void			ft_init_burning_ship(t_data *data);
+void			ft_calc_burning_ship(t_data *data);
+void			ft_burning_ship(t_data *data);
+unsigned int	ft_get_color(int n);
 
 #endif

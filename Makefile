@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/07 22:13:11 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/08 15:19:20 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ INCS			=	-I $(MLX_DIR) -I $(INC_DIR) -I $(FT_DIR)
 SAN				=	-g3 -fsanitize=address
 
 SRCS			=	main.c \
-					draw.c \
+					ft_draw.c \
 					ft_mandelbrot.c \
 					ft_julia.c \
 					ft_burning_ship.c

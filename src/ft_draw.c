@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   ft_draw.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:14:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 18:48:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/08 16:25:03 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 // 1 -> big endian
 // 0 -> little endian
 
-void	ft_att_pixel(t_data *data, int x, int y, int color)
+void	ft_att_pixel(t_data *data, int color)
 {
 	int	pixel;
 
-	pixel = (y * data->img.line_len) + (x * 4);
+	pixel = (data->img.y * data->img.line_len) + \
+			(data->img.x * 4);
 	if (data->img.endian == 1)
 	{
 		data->img.addr[pixel + 0] = (color >> 24);
@@ -34,4 +35,24 @@ void	ft_att_pixel(t_data *data, int x, int y, int color)
 		data->img.addr[pixel + 2] = (color >> 16) & 0xFF;
 		data->img.addr[pixel + 3] = (color >> 24);
 	}
+}
+
+unsigned int	ft_get_color(int n)
+{
+	double			t;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	unsigned int	color;
+
+	t = pow(log(((double)(n % 128))) / log(128.0), 2);
+	color = 0x101010;
+	if (t < 0.99)
+	{
+		r = 8 * (1 - t) * t * t * t * 255;
+		g = 14 * (1 - t) * (1 - t) * t * t * 255;
+		b = 8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255;
+		color = r << 16 | g << 8 | b;
+	}
+	return (color);
 }

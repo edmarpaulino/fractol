@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 09:42:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/07 22:06:42 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/08 22:32:26 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ void	ft_strupper(char *str);
 void	ft_strlower(char *str);
 size_t	ft_strnlen(const char *str, size_t maxlen);
 size_t	ft_nbrlen(ssize_t nbr, int base);
+double	ft_atof(const char *str);
+int		ft_iswhitespace(int c);
+int		ft_signal(char c);
 
 #endif

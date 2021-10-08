@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/08 22:52:14 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/08 23:32:53 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRC				=		ft_isalpha.c \
 						ft_nbrlen.c \
 						ft_atof.c \
 						ft_iswhitespace.c \
-						ft_signal.c
+						ft_signal.c \
+						ft_lastchr.c
 
 HEADER_DIR		=		../includes
 

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 00:38:16 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 01:11:39 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
+		ft_options_message();
 		mlx_destroy_image(data.mlx, data.img.img);
 		mlx_destroy_window(data.mlx, data.win);
 	}

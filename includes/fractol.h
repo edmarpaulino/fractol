@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/08 22:54:07 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 01:11:59 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_const
 	double	im;
 }				t_const;
 
+void			ft_options_message(void);
 void			ft_att_pixel(t_data *data, int color);
 void			ft_init_mandelbrot(t_data *data);
 void			ft_calc_mandelbrot(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:40:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 17:22:18 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 17:54:14 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,43 @@ int	ft_key_select(int keycode, t_data *data)
 	}
 	else if (keycode == C_KEY)
 		printf("this is the key:	c\n");
+	return (1);
+}
+
+int	ft_zoom(int keycode, t_data *data)
+{
+	if (keycode == SCROLL_UP)
+	{
+		printf("this is the key:	scroll_up\n");
+		data->real.min += 0.1;
+		data->real.max -= 0.1;
+		data->im.min += 0.1;
+		data->im.max = data->im.min + \
+						(data->real.max - data->real.min) * \
+						data->height / data->width;
+		data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
+		data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
+		data->img.max_i = 600;
+		data->img.y = -1;
+		data->img.x = -1;
+		ft_calc_mandelbrot(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	}
+	else if (keycode == SCROLL_DOWN)
+	{
+		data->real.min -= 0.1;
+		data->real.max += 0.1;
+		data->im.min -= 0.1;
+		data->im.max = data->im.min + \
+						(data->real.max - data->real.min) * \
+						data->height / data->width;
+		data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
+		data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
+		data->img.max_i = 600;
+		data->img.y = -1;
+		data->img.x = -1;
+		ft_calc_mandelbrot(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	}
 	return (1);
 }

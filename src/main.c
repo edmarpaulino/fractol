@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 17:08:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 12:55:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,21 @@ int	main(int argc, char **argv)
 		if (ft_word_counter(argv[2]) == 2)
 		{
 			str = ft_split(argv[2], ' ');
-			c.real = ft_atof(str[0]);
-			c.im = ft_atof(str[1]);
-			ft_init_julia(&data, &c);
-			mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
-			mlx_loop(data.mlx);
-			i = 0;
+			if (ft_lastchr(str[0]) != 'i')
+			{
+				c.real = ft_atof(str[0]);
+				c.im = ft_atof(str[1]);
+				ft_init_julia(&data, &c);
+				mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
+				mlx_loop(data.mlx);
+				i = 0;
+			}
+			if (ft_lastchr(str[0]) == 'i')
+			{
+				ft_options_message();
+				mlx_destroy_image(data.mlx, data.img.img);
+				mlx_destroy_window(data.mlx, data.win);
+			}
 			while (str[i])
 			{
 				free(str[i]);
@@ -68,6 +77,7 @@ int	main(int argc, char **argv)
 	}
 	else if (!ft_strcmp(argv[1], "julia") \
 			&& argc == 4 \
+			&& ft_lastchr(argv[2]) != 'i' \
 			&& ft_lastchr(argv[3]) == 'i')
 	{
 		c.real = ft_atof(argv[2]);

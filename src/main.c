@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 01:11:39 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 17:08:37 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	main(int argc, char **argv)
 	t_const	c;
 	char	**str;
 	int		i;
-	int		count;
 
 	if (argc < 2)
+	{
+		ft_options_message();
 		return (1);
+	}
 	data.mlx = mlx_init();
 	data.height = 600;
 	data.width = 800;
@@ -41,16 +43,7 @@ int	main(int argc, char **argv)
 			&& argc == 3 \
 			&& ft_lastchr(argv[2]) == 'i') // fix this
 	{
-		i = 0;
-		count = 0;
-		while (argv[2][i])
-		{
-			if (argv[2][i] != ' ' \
-				&& (argv[2][i + 1] == ' ' || argv[2][i + 1] == '\0'))
-				++count;
-			++i;
-		}
-		if (count == 2)
+		if (ft_word_counter(argv[2]) == 2)
 		{
 			str = ft_split(argv[2], ' ');
 			c.real = ft_atof(str[0]);
@@ -65,6 +58,12 @@ int	main(int argc, char **argv)
 				i++;
 			}
 			free(str);
+		}
+		else
+		{
+			ft_options_message();
+			mlx_destroy_image(data.mlx, data.img.img);
+			mlx_destroy_window(data.mlx, data.win);
 		}
 	}
 	else if (!ft_strcmp(argv[1], "julia") \

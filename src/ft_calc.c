@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:20:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 16:13:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 17:17:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_calc_mandelbrot(t_data *data)
 					ft_att_pixel(data, ft_get_color(data->img.i));
 					break ;
 				}
+				else
+					ft_att_pixel(data, 0x00000000);
 				data->im.z = 2 * data->real.z * data->im.z + data->im.c;
 				data->real.z = data->real.pow2 - data->im.pow2 + data->real.c;
 			}

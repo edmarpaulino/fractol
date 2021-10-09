@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/09 15:23:19 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/09 16:52:52 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ SRCS			=	main.c \
 					ft_calc.c \
 					ft_messages.c \
 					ft_init.c \
-					ft_clear.c
+					ft_clear.c \
+					ft_move.c
 OBJS			=	$(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 RM				=	rm -rf

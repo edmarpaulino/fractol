@@ -6,11 +6,18 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 12:55:49 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 14:55:40 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	ft_clear_memory(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_display(data->mlx);
+	exit(0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -37,6 +44,7 @@ int	main(int argc, char **argv)
 	{
 		ft_init_mandelbrot(&data);
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
+		mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
 		mlx_loop(data.mlx);
 	}
 	else if (!ft_strcmp(argv[1], "julia") \
@@ -52,6 +60,7 @@ int	main(int argc, char **argv)
 				c.im = ft_atof(str[1]);
 				ft_init_julia(&data, &c);
 				mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
+				mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
 				mlx_loop(data.mlx);
 				i = 0;
 			}
@@ -84,12 +93,15 @@ int	main(int argc, char **argv)
 		c.im = ft_atof(argv[3]);
 		ft_init_julia(&data, &c);
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
+		mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
 		mlx_loop(data.mlx);
 	}
-	else if (!ft_strcmp(argv[1], "burning"))
+	else if (!ft_strcmp(argv[1], "burning") \
+			|| !ft_strcmp(argv[1], "burning-ship"))
 	{
 		ft_init_burning_ship(&data);
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
+		mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
 		mlx_loop(data.mlx);
 	}
 	else

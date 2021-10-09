@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 15:52:17 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/08 16:58:54 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 14:36:45 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_init_mandelbrot(t_data *data)
 {
-	data->real.min = -1.5;
-	data->real.max = data->real.min + 2.5;
+	data->real.min = -2.5;
+	data->real.max = data->real.min + 3.5;
 	data->im.min = -1.2;
 	data->im.max = data->im.min + \
 					(data->real.max - data->real.min) * \
@@ -44,7 +44,7 @@ void	ft_calc_mandelbrot(t_data *data)
 			{
 				data->real.pow2 = data->real.z * data->real.z;
 				data->im.pow2 = data->im.z * data->im.z;
-				if (data->real.pow2 + data->im.pow2 > 6)
+				if (data->real.pow2 + data->im.pow2 > 4)
 				{
 					ft_att_pixel(data, ft_get_color(data->img.i));
 					break ;

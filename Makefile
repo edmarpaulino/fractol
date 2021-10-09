@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/09 01:10:49 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/09 15:23:19 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,10 +37,10 @@ SAN				=	-g3 -fsanitize=address
 
 SRCS			=	main.c \
 					ft_draw.c \
-					ft_mandelbrot.c \
-					ft_julia.c \
-					ft_burning_ship.c \
-					ft_messages.c
+					ft_calc.c \
+					ft_messages.c \
+					ft_init.c \
+					ft_clear.c
 OBJS			=	$(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 RM				=	rm -rf

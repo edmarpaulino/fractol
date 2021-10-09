@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:14:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/08 16:25:03 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:32:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,10 @@ unsigned int	ft_get_color(int n)
 		color = r << 16 | g << 8 | b;
 	}
 	return (color);
+}
+
+int	ft_put_image_to_window(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 01:11:59 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:32:56 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_const
 	double	im;
 }				t_const;
 
+int				ft_init_display(t_data *data);
+int				ft_clear_memory(t_data *data);
 void			ft_options_message(void);
 void			ft_att_pixel(t_data *data, int color);
 void			ft_init_mandelbrot(t_data *data);
@@ -71,5 +73,6 @@ void			ft_init_burning_ship(t_data *data);
 void			ft_calc_burning_ship(t_data *data);
 void			ft_burning_ship(t_data *data);
 unsigned int	ft_get_color(int n);
+int				ft_put_image_to_window(t_data *data);
 
 #endif

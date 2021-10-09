@@ -6,18 +6,11 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 14:55:40 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/09 16:34:08 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int	ft_clear_memory(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
-	exit(0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -31,20 +24,15 @@ int	main(int argc, char **argv)
 		ft_options_message();
 		return (1);
 	}
-	data.mlx = mlx_init();
-	data.height = 600;
-	data.width = 800;
-	data.title = "fractol";
-	data.win = mlx_new_window(data.mlx, data.width, data.height, data.title);
-	data.img.img = mlx_new_image(data.mlx, data.width, data.height);
-	data.img.addr = mlx_get_data_addr(data.img.img, &data.img.bpp, \
-										&data.img.line_len, &data.img.endian);
+	if (ft_init_display(&data) == -1)
+		ft_clear_memory(&data);
 	ft_strlower(argv[1]);
 	if (!ft_strcmp(argv[1], "mandelbrot"))
 	{
 		ft_init_mandelbrot(&data);
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 		mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
+		mlx_expose_hook(data.win, &ft_put_image_to_window, &data);
 		mlx_loop(data.mlx);
 	}
 	else if (!ft_strcmp(argv[1], "julia") \
@@ -54,13 +42,14 @@ int	main(int argc, char **argv)
 		if (ft_word_counter(argv[2]) == 2)
 		{
 			str = ft_split(argv[2], ' ');
-			if (ft_lastchr(str[0]) != 'i')
+			if (!ft_isalpha(ft_lastchr(str[0])))
 			{
 				c.real = ft_atof(str[0]);
 				c.im = ft_atof(str[1]);
 				ft_init_julia(&data, &c);
 				mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 				mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
+				mlx_expose_hook(data.win, &ft_put_image_to_window, &data);
 				mlx_loop(data.mlx);
 				i = 0;
 			}
@@ -94,6 +83,7 @@ int	main(int argc, char **argv)
 		ft_init_julia(&data, &c);
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 		mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
+		mlx_expose_hook(data.win, &ft_put_image_to_window, &data);
 		mlx_loop(data.mlx);
 	}
 	else if (!ft_strcmp(argv[1], "burning") \
@@ -102,13 +92,13 @@ int	main(int argc, char **argv)
 		ft_init_burning_ship(&data);
 		mlx_put_image_to_window(data.mlx, data.win, data.img.img, 0, 0);
 		mlx_hook(data.win, 17, 1L << 0, &ft_clear_memory, &data);
+		mlx_expose_hook(data.win, &ft_put_image_to_window, &data);
 		mlx_loop(data.mlx);
 	}
 	else
 	{
 		ft_options_message();
-		mlx_destroy_image(data.mlx, data.img.img);
-		mlx_destroy_window(data.mlx, data.win);
+		ft_clear_memory(&data);
 	}
 	return (0);
 }

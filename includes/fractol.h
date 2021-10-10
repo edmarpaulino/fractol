@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 17:48:12 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/10 14:24:36 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ typedef struct s_img
 	int		max_i;
 }				t_img;
 
+typedef struct s_const
+{
+	double	real;
+	double	im;
+}				t_const;
+
 typedef struct s_data
 {
 	void	*mlx;
@@ -60,16 +66,12 @@ typedef struct s_data
 	int		height;
 	int		width;
 	char	*title;
+	int		epa;
 	t_img	img;
 	t_calc	real;
 	t_calc	im;
+	t_const	c;
 }				t_data;
-
-typedef struct s_const
-{
-	double	real;
-	double	im;
-}				t_const;
 
 int				ft_init_display(t_data *data);
 int				ft_clear_memory(t_data *data);
@@ -77,8 +79,8 @@ void			ft_options_message(void);
 void			ft_att_pixel(t_data *data, int color);
 void			ft_init_mandelbrot(t_data *data);
 void			ft_calc_mandelbrot(t_data *data);
-void			ft_init_julia(t_data *data, t_const *c);
-void			ft_calc_julia(t_data *data, t_const *c);
+void			ft_init_julia(t_data *data);
+void			ft_calc_julia(t_data *data);
 void			ft_init_burning_ship(t_data *data);
 void			ft_calc_burning_ship(t_data *data);
 void			ft_burning_ship(t_data *data);

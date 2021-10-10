@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:17:13 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 15:53:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/10 14:23:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ int	ft_clear_memory(t_data *data)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
+	if (data)
+		free(data);
 	exit(0);
 }

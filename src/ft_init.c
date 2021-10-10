@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 16:28:09 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/10 18:53:09 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	ft_init_display(t_data *data)
 
 void	ft_init_mandelbrot(t_data *data)
 {
-	data->real.min = -2.5;
-	data->real.max = data->real.min + 3.5;
+	data->real.min = -2.0;
+	data->real.max = 2.0;
 	data->im.min = -1.2;
 	data->im.max = data->im.min + \
 					(data->real.max - data->real.min) * \
@@ -51,7 +51,7 @@ void	ft_init_mandelbrot(t_data *data)
 }
 
 
-void	ft_init_julia(t_data *data, t_const *c)
+void	ft_init_julia(t_data *data)
 {
 	data->real.min = -2.5;
 	data->real.max = data->real.min + 3.5;
@@ -64,7 +64,7 @@ void	ft_init_julia(t_data *data, t_const *c)
 	data->img.max_i = 600;
 	data->img.y = -1;
 	data->img.x = -1;
-	ft_calc_julia(data, c);
+	ft_calc_julia(data);
 }
 
 void	ft_init_burning_ship(t_data *data)

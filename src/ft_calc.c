@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:20:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 17:17:01 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/10 18:43:02 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_calc_mandelbrot(t_data *data)
 			{
 				data->real.pow2 = data->real.z * data->real.z;
 				data->im.pow2 = data->im.z * data->im.z;
-				if (data->real.pow2 + data->im.pow2 > 16)
+				if (data->real.pow2 + data->im.pow2 > 4)
 				{
 					ft_att_pixel(data, ft_get_color(data->img.i));
 					break ;
@@ -42,7 +42,7 @@ void	ft_calc_mandelbrot(t_data *data)
 	}
 }
 
-void	ft_calc_julia(t_data *data, t_const *c)
+void	ft_calc_julia(t_data *data)
 {
 	while (++data->img.y < data->height)
 	{
@@ -58,13 +58,15 @@ void	ft_calc_julia(t_data *data, t_const *c)
 			{
 				data->real.pow2 = data->real.z * data->real.z;
 				data->im.pow2 = data->im.z * data->im.z;
-				if (data->real.pow2 + data->im.pow2 > 6)
+				if (data->real.pow2 + data->im.pow2 > 4)
 				{
 					ft_att_pixel(data, ft_get_color(data->img.i));
 					break ;
 				}
-				data->im.z = 2 * data->real.z * data->im.z + c->im;
-				data->real.z = data->real.pow2 - data->im.pow2 + c->real;
+				else
+					ft_att_pixel(data, 0x00000000);
+				data->im.z = 2 * data->real.z * data->im.z +data->c.im;
+				data->real.z = data->real.pow2 - data->im.pow2 + data->c.real;
 			}
 		}
 	}
@@ -86,11 +88,13 @@ void	ft_calc_burning_ship(t_data *data)
 			{
 				data->real.pow2 = data->real.z * data->real.z;
 				data->im.pow2 = data->im.z * data->im.z;
-				if (data->real.pow2 + data->im.pow2 > 6)
+				if (data->real.pow2 + data->im.pow2 > 4)
 				{
 					ft_att_pixel(data, ft_get_color(data->img.i));
 					break ;
 				}
+				else
+					ft_att_pixel(data, 0x00000000);
 				data->im.z = fabs(2 * data->real.z * data->im.z) + data->im.c;
 				data->real.z = data->real.pow2 - data->im.pow2 + data->real.c;
 			}

@@ -6,11 +6,12 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/10 11:54:13 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/10 12:16:12 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libft.a
+
 SRC				=	./src
 SRCS			=	ft_isalpha.c \
 					ft_isdigit.c \

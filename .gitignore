@@ -1,2 +1,7 @@
 *tests
+**.o
+**.a
+**.out
+**.gch
+*.vscode
 **.txt

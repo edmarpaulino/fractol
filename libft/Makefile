@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/10 12:16:12 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/11 14:50:59 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,7 @@ $(OBJ)/%.o:	$(SRC)/%.c
 			$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			ar cr $(NAME) $(OBJ)/*.o
+			ar crs $(NAME) $(OBJ)/*.o
 
 clean:
 			rm -rf $(OBJ)

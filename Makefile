@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/10 12:15:14 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/11 16:09:49 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,17 +22,25 @@ LIB_DIR			=	./lib
 SYS_CAL			=	-l Xext -l X11 -l m
 
 MLX_DIR			=	./minilibx
+
 MLX_LIB			=	mlx_Linux
+
 MLX_CAL			=	-L $(MLX_DIR) -l $(MLX_LIB)
 
 FT_DIR			=	./libft
+
 FT_LIB			=	ft
+
 FT_CAL			=	-L $(FT_DIR) -l $(FT_LIB)
 
 CC				=	gcc
+
 CFLAGS			=	-Wall -Wextra -Werror -O3
+
 LIBS			=	$(MLX_CAL) $(FT_CAL) $(SYS_CAL)
+
 INCS			=	-I $(MLX_DIR) -I $(INC_DIR) -I $(FT_DIR)
+
 SAN				=	-g3 -fsanitize=address
 
 SRCS			=	main.c \
@@ -42,6 +50,7 @@ SRCS			=	main.c \
 					ft_init.c \
 					ft_clear.c \
 					ft_move.c
+
 OBJS			=	$(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 RM				=	rm -rf

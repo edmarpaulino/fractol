@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 10:51:09 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 16:54:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define C_KEY 99
 # define I_KEY 105
 # define O_KEY 111
+# define MAX_I 600
 
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5

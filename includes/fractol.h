@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 16:54:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:29:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_data
 	int		width;
 	char	*title;
 	int		epa;
+	int		ch_color;
 	t_img	img;
 	t_calc	real;
 	t_calc	im;
@@ -87,7 +88,7 @@ void			ft_calc_julia(t_data *data);
 void			ft_init_burning_ship(t_data *data);
 void			ft_calc_burning_ship(t_data *data);
 void			ft_burning_ship(t_data *data);
-unsigned int	ft_get_color(int n);
+unsigned int	ft_get_color(int n, int c);
 int				ft_put_image_to_window(t_data *data);
 int				ft_key_select(int keycode, t_data *data);
 int				ft_zoom(int keycode, int x, int y, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:40:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 17:04:03 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 18:02:09 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,18 @@ int	ft_key_select(int keycode, t_data *data)
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	}
 	else if (keycode == C_KEY)
-		printf("this is the key:	c\n");
+	{
+		data->img.y = -1;
+		data->ch_color = (data->ch_color + 1) % 6;
+		printf("color:	%d\n", data->ch_color);
+		if (data->epa == 1)
+			ft_calc_mandelbrot(data);
+		else if (data->epa == 2)
+			ft_calc_julia(data);
+		else if (data->epa == 3)
+			ft_calc_burning_ship(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	}
 	return (1);
 }
 

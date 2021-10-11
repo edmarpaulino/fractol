@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:14:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 12:21:43 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:49:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_att_pixel(t_data *data, int color)
 	}
 }
 
-unsigned int	ft_get_color(int n)
+unsigned int	ft_get_color(int n, int c)
 {
 	double			t;
 	unsigned int	r;
@@ -52,7 +52,18 @@ unsigned int	ft_get_color(int n)
 		r = 8 * (1 - t) * t * t * t * 255;
 		g = 14 * (1 - t) * (1 - t) * t * t * 255;
 		b = 8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255;
-		color = r << 16 | g << 8 | b;
+		if (c == 0)
+			color = r << 16 | g << 8 | b;
+		else if (c == 1)
+			color = r << 16 | b << 8 | g;
+		else if (c == 2)
+			color = g << 16 | b << 8 | r;
+		else if (c == 3)
+			color = g << 16 | r << 8 | b;
+		else if (c == 4)
+			color = b << 16 | r << 8 | g;
+		else if (c == 5)
+			color = b << 16 | g << 8 | r;
 	}
 	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:20:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 12:26:02 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:52:10 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	ft_calc_mandelbrot(t_data *data)
 				data->im.pow2 = data->im.z * data->im.z;
 				if (data->real.pow2 + data->im.pow2 > 4)
 				{
-					ft_att_pixel(data, ft_get_color(data->img.i));
+					ft_att_pixel(data,\
+								ft_get_color(data->img.i, data->ch_color));
 					break ;
 				}
 				else
@@ -60,7 +61,8 @@ void	ft_calc_julia(t_data *data)
 				data->im.pow2 = data->im.z * data->im.z;
 				if (data->real.pow2 + data->im.pow2 > 4)
 				{
-					ft_att_pixel(data, ft_get_color(data->img.i));
+					ft_att_pixel(data,\
+								ft_get_color(data->img.i, data->ch_color));
 					break ;
 				}
 				else
@@ -90,7 +92,8 @@ void	ft_calc_burning_ship(t_data *data)
 				data->im.pow2 = data->im.z * data->im.z;
 				if (data->real.pow2 + data->im.pow2 > 4)
 				{
-					ft_att_pixel(data, ft_get_color(data->img.i));
+					ft_att_pixel(data,\
+								ft_get_color(data->img.i, data->ch_color));
 					break ;
 				}
 				else

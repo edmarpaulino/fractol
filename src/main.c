@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 12:26:50 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 17:11:44 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	if (ft_init_display(data) == -1)
 		ft_clear_memory(data);
 	ft_strlower(argv[1]);
+	data->ch_color = 0;
 	if (!ft_strcmp(argv[1], "mandelbrot"))
 	{
 		data->epa = 1;

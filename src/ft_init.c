@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/10 18:53:09 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 10:55:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_init_mandelbrot(t_data *data)
 					data->height / data->width;
 	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
 	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
-	data->img.max_i = 600;
+	data->img.max_i = 27;
 	data->img.y = -1;
 	data->img.x = -1;
 	ft_calc_mandelbrot(data);
@@ -61,7 +61,7 @@ void	ft_init_julia(t_data *data)
 					data->height / data->width;
 	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
 	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
-	data->img.max_i = 600;
+	data->img.max_i = 27;
 	data->img.y = -1;
 	data->img.x = -1;
 	ft_calc_julia(data);
@@ -79,7 +79,7 @@ void	ft_init_burning_ship(t_data *data)
 	data->im.max = -data->im.max;
 	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
 	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
-	data->img.max_i = 600;
+	data->img.max_i = 27;
 	data->img.y = -1;
 	data->img.x = -1;
 	ft_calc_burning_ship(data);

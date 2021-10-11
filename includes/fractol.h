@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/10 14:24:36 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 10:51:09 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
 # define C_KEY 99
+# define I_KEY 105
+# define O_KEY 111
 
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
@@ -87,6 +89,6 @@ void			ft_burning_ship(t_data *data);
 unsigned int	ft_get_color(int n);
 int				ft_put_image_to_window(t_data *data);
 int				ft_key_select(int keycode, t_data *data);
-int				ft_zoom(int keycode, t_data *data);
+int				ft_zoom(int keycode, int x, int y, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:40:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 10:57:51 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:25:20 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,40 +81,6 @@ int	ft_key_select(int keycode, t_data *data)
 	}
 	else if (keycode == C_KEY)
 		printf("this is the key:	c\n");
-	else if (keycode == O_KEY)
-	{
-		printf("this is the key:	o\n");
-		// printf("%f\n", data->real.min);
-		// printf("%f\n", data->real.max);
-		// printf("%f\n", data->im.min);
-		// printf("%f\n", data->im.max);
-		data->real.min *= 1.05;
-		data->real.max *= 1.05;
-		data->im.min *= 1.05;
-		data->im.max *= 1.05;
-		data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
-		data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
-		data->img.y = -1;
-		ft_calc_mandelbrot(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	}
-	else if (keycode == I_KEY)
-	{
-		printf("this is the key:	i\n");
-		// printf("%f\n", data->real.min);
-		// printf("%f\n", data->real.max);
-		// printf("%f\n", data->im.min);
-		// printf("%f\n", data->im.max);
-		data->real.min /= 1.05;
-		data->real.max /= 1.05;
-		data->im.min /= 1.05;
-		data->im.max /= 1.05;
-		data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
-		data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
-		data->img.y = -1;
-		ft_calc_mandelbrot(data);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	}
 	return (1);
 }
 
@@ -125,15 +91,12 @@ int	ft_zoom(int keycode, int x, int y, t_data *data)
 	if (keycode == SCROLL_UP)
 	{
 		printf("this is the key:	i\n");
-		// printf("%f\n", data->real.min);
-		// printf("%f\n", data->real.max);
-		// printf("%f\n", data->im.min);
-		// printf("%f\n", data->im.max);
 		data->real.min /= 1.05;
 		data->real.max /= 1.05;
 		data->im.min /= 1.05;
 		data->im.max /= 1.05;
-		data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
+		data->real.factor = (data->real.max - data->real.min) / \
+							(data->width - 1);
 		data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
 		data->img.y = -1;
 		if (data->epa == 1)
@@ -147,15 +110,12 @@ int	ft_zoom(int keycode, int x, int y, t_data *data)
 	else if (keycode == SCROLL_DOWN)
 	{
 		printf("this is the key:	o\n");
-		// printf("%f\n", data->real.min);
-		// printf("%f\n", data->real.max);
-		// printf("%f\n", data->im.min);
-		// printf("%f\n", data->im.max);
 		data->real.min *= 1.05;
 		data->real.max *= 1.05;
 		data->im.min *= 1.05;
 		data->im.max *= 1.05;
-		data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
+		data->real.factor = (data->real.max - data->real.min) / \
+							(data->width - 1);
 		data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
 		data->img.y = -1;
 		if (data->epa == 1)

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 10:59:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:26:50 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,12 @@ int	main(int argc, char **argv)
 		mlx_hook(data->win, 17, 1L << 0, &ft_clear_memory, data);
 		mlx_hook(data->win, 2, 1L << 0, &ft_key_select, data);
 		mlx_mouse_hook(data->win, &ft_zoom, data);
-		// mlx_mouse_hook(data->win, &ft_key, data);
 		mlx_expose_hook(data->win, &ft_put_image_to_window, data);
 		mlx_loop(data->mlx);
 	}
 	else if (!ft_strcmp(argv[1], "julia") \
 			&& argc == 3 \
-			&& ft_lastchr(argv[2]) == 'i') // fix this
+			&& ft_lastchr(argv[2]) == 'i')
 	{
 		if (ft_word_counter(argv[2]) == 2)
 		{
@@ -58,7 +57,8 @@ int	main(int argc, char **argv)
 				data->c.im = ft_atof(str[1]);
 				data->epa = 2;
 				ft_init_julia(data);
-				mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+				mlx_put_image_to_window(data->mlx, data->win, \
+										data->img.img, 0, 0);
 				mlx_hook(data->win, 17, 1L << 0, &ft_clear_memory, data);
 				mlx_hook(data->win, 2, 1L << 0, &ft_key_select, data);
 				mlx_mouse_hook(data->win, &ft_zoom, data);

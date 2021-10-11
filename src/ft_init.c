@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 10:55:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/11 12:24:20 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	ft_init_mandelbrot(t_data *data)
 	data->img.x = -1;
 	ft_calc_mandelbrot(data);
 }
-
 
 void	ft_init_julia(t_data *data)
 {

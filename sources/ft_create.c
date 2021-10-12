@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 12:25:31 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 15:21:27 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static void	ft_create_window(t_data *data)
 	data->win = mlx_new_window(data->mlx, data->width, \
 								data->height, data->title);
 	if (!data->win)
-		ft_clear_memory(data, EXIT_ERROR);
+		ft_clear_memory(data, EXIT_FAILURE);
 }
 
 static void	ft_create_image(t_data *data)
 {
 	data->img.img = mlx_new_image(data->mlx, data->width, data->height);
 	if (!data->img.img)
-		ft_clear_memory(data, EXIT_ERROR);
+		ft_clear_memory(data, EXIT_FAILURE);
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp, \
 										&data->img.line_len, &data->img.endian);
 	if (!data->img.addr)
-		ft_clear_memory(data, EXIT_ERROR);
+		ft_clear_memory(data, EXIT_FAILURE);
 }
 
 void	ft_create_display(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		ft_clear_memory(data, EXIT_ERROR);
+		ft_clear_memory(data, EXIT_FAILURE);
 	data->height = 600;
 	data->width = 800;
 	data->title = "fractol";

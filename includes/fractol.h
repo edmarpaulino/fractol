@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 12:15:41 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 15:56:25 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@
 
 # define SUCCESS 1
 # define ERROR -1
-# define EXIT_SUCCESS 0
-# define EXIT_ERROR 1
 
-# define MAX_I 600
+# define MAX_I 100
 
 # define MANDELBROT 0
 # define JULIA 1
@@ -43,6 +41,14 @@
 
 # define ZOOM_IN 1
 # define ZOOM_OUT -1
+
+typedef struct s_color
+{
+	double			t;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+}				t_color;
 
 typedef struct s_zoom
 {
@@ -99,16 +105,15 @@ typedef struct s_data
 	t_const	cons;
 }				t_data;
 
+void	ft_init(int argc, char **argv, t_data *data);
 void	ft_create_display(t_data *data);
-void	ft_att_factor(t_data *data);
 void	ft_create_fractal(t_data *data);
-void	ft_att_pixel(t_data *data);
-void	ft_get_color(t_data *data);
-int		ft_put_image_to_window(t_data *data);
 void	ft_draw_fractal(t_data *data);
+void	ft_att_factor(t_data *data);
+int		ft_redraw(t_data *data);
 int		ft_key_select(int keycode, t_data *data);
 int		ft_zoom(int keycode, int x, int y, t_data *data);
-int		ft_clear_memory(t_data *data, int status);
 void	ft_options_message(void);
+int		ft_clear_memory(t_data *data, int status);
 
 #endif

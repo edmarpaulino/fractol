@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:14:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 12:14:38 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 16:10:40 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 // 1 -> big endian
 // 0 -> little endian
 
-void	ft_att_pixel(t_data *data)
+int	ft_redraw(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	return (SUCCESS);
+}
+
+static void	ft_att_pixel(t_data *data, int color)
 {
 	int	pixel;
 
@@ -23,54 +29,43 @@ void	ft_att_pixel(t_data *data)
 			(data->img.x * 4);
 	if (data->img.endian == 1)
 	{
-		data->img.addr[pixel + 0] = (data->img.pixel_color >> 24);
-		data->img.addr[pixel + 1] = (data->img.pixel_color >> 16) & 0xFF;
-		data->img.addr[pixel + 2] = (data->img.pixel_color >> 8) & 0xFF;
-		data->img.addr[pixel + 3] = (data->img.pixel_color) & 0xFF;
+		data->img.addr[pixel + 0] = (color >> 24);
+		data->img.addr[pixel + 1] = (color >> 16) & 0xFF;
+		data->img.addr[pixel + 2] = (color >> 8) & 0xFF;
+		data->img.addr[pixel + 3] = (color) & 0xFF;
 	}
 	else if (data->img.endian == 0)
 	{
-		data->img.addr[pixel + 0] = (data->img.pixel_color) & 0xFF;
-		data->img.addr[pixel + 1] = (data->img.pixel_color >> 8) & 0xFF;
-		data->img.addr[pixel + 2] = (data->img.pixel_color >> 16) & 0xFF;
-		data->img.addr[pixel + 3] = (data->img.pixel_color >> 24);
+		data->img.addr[pixel + 0] = (color) & 0xFF;
+		data->img.addr[pixel + 1] = (color >> 8) & 0xFF;
+		data->img.addr[pixel + 2] = (color >> 16) & 0xFF;
+		data->img.addr[pixel + 3] = (color >> 24);
 	}
 }
 
-void	ft_get_color(t_data *data)
+static void	ft_get_color(t_data *data)
 {
-	double			t;
-	unsigned int	r;
-	unsigned int	g;
-	unsigned int	b;
+	t_color	color;
 
-	t = pow(log(((double)(data->img.i % 128))) / log(128.0), 2);
-	data->img.pixel_color = 0x101010;
-	if (t < 0.99)
+	color.t = pow(log(((double)(data->img.i % 128))) / log(128.0), 2);
+	if (color.t < 0.99)
 	{
-		r = 8 * (1 - t) * t * t * t * 255;
-		g = 14 * (1 - t) * (1 - t) * t * t * 255;
-		b = 8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255;
+		color.r = 8 * (1 - color.t) * pow(color.t, 3) * 255;
+		color.g = 14 * pow((1 - color.t), 2) * pow(color.t, 2) * 255;
+		color.b = 8.5 * pow((1 - color.t), 3) * color.t * 255;
 		if (data->color == 0)
-			data->img.pixel_color = r << 16 | g << 8 | b;
+			ft_att_pixel(data, (color.r << 16 | color.g << 8 | color.b));
 		else if (data->color == 1)
-			data->img.pixel_color = r << 16 | b << 8 | g;
+			ft_att_pixel(data, (color.r << 16 | color.b << 8 | color.g));
 		else if (data->color == 2)
-			data->img.pixel_color = g << 16 | b << 8 | r;
+			ft_att_pixel(data, (color.g << 16 | color.b << 8 | color.r));
 		else if (data->color == 3)
-			data->img.pixel_color = g << 16 | r << 8 | b;
+			ft_att_pixel(data, (color.g << 16 | color.r << 8 | color.b));
 		else if (data->color == 4)
-			data->img.pixel_color = b << 16 | r << 8 | g;
+			ft_att_pixel(data, (color.b << 16 | color.r << 8 | color.g));
 		else if (data->color == 5)
-			data->img.pixel_color = b << 16 | g << 8 | r;
+			ft_att_pixel(data, (color.b << 16 | color.g << 8 | color.r));
 	}
-	ft_att_pixel(data);
-}
-
-int	ft_put_image_to_window(t_data *data)
-{
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-	return (1);
 }
 
 static void	ft_att_z_value(t_data *data)
@@ -107,15 +102,17 @@ void	ft_draw_fractal(t_data *data)
 			data->img.i = -1;
 			while (++data->img.i < data->img.max_i)
 			{
-				data->real.z_pow2 = data->real.z * data->real.z;
-				data->im.z_pow2 = data->im.z * data->im.z;
+				data->real.z_pow2 = pow(data->real.z, 2);
+				data->im.z_pow2 = pow(data->im.z, 2);
 				if (data->real.z_pow2 + data->im.z_pow2 > 4)
+				{
+					ft_get_color(data);
 					break ;
-				data->img.pixel_color = 0x00000000;
-				ft_att_pixel(data);
+				}
+				ft_att_pixel(data, 0x00000000);
 				ft_att_z_value(data);
 			}
-			ft_get_color(data);
 		}
 	}
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/12 12:17:18 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/12 15:21:01 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS			=	main.c \
 					ft_move.c \
 					ft_zoom.c \
 					ft_clear.c \
-					ft_messages.c
+					ft_messages.c \
+					ft_init.c
 
 OBJ				=	./objects
 OBJS			=	$(addprefix $(OBJ)/,$(SRCS:.c=.o))

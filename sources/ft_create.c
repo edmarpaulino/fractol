@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 11:02:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 11:54:55 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ void	ft_create_display(t_data *data)
 	ft_create_image(data);
 }
 
+void	ft_att_factor(t_data *data)
+{
+	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
+	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
+}
+
 void	ft_create_fractal(t_data *data)
 {
 	data->real.min = -2.0;
@@ -54,8 +60,7 @@ void	ft_create_fractal(t_data *data)
 		data->im.min = -data->im.min;
 		data->im.max = -data->im.max;
 	}
-	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
-	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
+	ft_att_factor(data);
 	data->img.max_i = MAX_I;
 	ft_draw_fractal(data);
 }

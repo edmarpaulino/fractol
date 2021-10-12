@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 11:15:06 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 12:15:41 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,19 +100,15 @@ typedef struct s_data
 }				t_data;
 
 void	ft_create_display(t_data *data);
-int		ft_clear_memory(t_data *data, int status);
-void	ft_options_message(void);
+void	ft_att_factor(t_data *data);
+void	ft_create_fractal(t_data *data);
 void	ft_att_pixel(t_data *data);
-void	ft_init_mandelbrot(t_data *data);
-void	ft_calc_mandelbrot(t_data *data);
-void	ft_init_julia(t_data *data);
-void	ft_calc_julia(t_data *data);
-void	ft_init_burning_ship(t_data *data);
-void	ft_calc_burning_ship(t_data *data);
-void	ft_burning_ship(t_data *data);
 void	ft_get_color(t_data *data);
 int		ft_put_image_to_window(t_data *data);
+void	ft_draw_fractal(t_data *data);
 int		ft_key_select(int keycode, t_data *data);
 int		ft_zoom(int keycode, int x, int y, t_data *data);
+int		ft_clear_memory(t_data *data, int status);
+void	ft_options_message(void);
 
 #endif

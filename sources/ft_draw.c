@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:14:21 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 11:05:15 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 12:14:38 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ void	ft_att_pixel(t_data *data)
 	{
 		data->img.addr[pixel + 0] = (data->img.pixel_color >> 24);
 		data->img.addr[pixel + 1] = (data->img.pixel_color >> 16) & 0xFF;
-		data->img.addr[pixel + 2] = (data->img.pixel_color>> 8) & 0xFF;
+		data->img.addr[pixel + 2] = (data->img.pixel_color >> 8) & 0xFF;
 		data->img.addr[pixel + 3] = (data->img.pixel_color) & 0xFF;
 	}
 	else if (data->img.endian == 0)
 	{
 		data->img.addr[pixel + 0] = (data->img.pixel_color) & 0xFF;
 		data->img.addr[pixel + 1] = (data->img.pixel_color >> 8) & 0xFF;
-		data->img.addr[pixel + 2] = (data->img.pixel_color>> 16) & 0xFF;
-		data->img.addr[pixel + 3] = (data->img.pixel_color>> 24);
+		data->img.addr[pixel + 2] = (data->img.pixel_color >> 16) & 0xFF;
+		data->img.addr[pixel + 3] = (data->img.pixel_color >> 24);
 	}
 }
 

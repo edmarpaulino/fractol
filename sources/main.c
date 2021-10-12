@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 10:22:26 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 12:12:45 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_strlower(argv[1]);
-	data->ch_color = 0;
+	data->color = 0;
 	if (!ft_strcmp(argv[1], "mandelbrot"))
 	{
-		if (ft_init_display(data) == -1)
-			ft_clear_memory(data);
-		data->epa = 1;
-		ft_init_mandelbrot(data);
+		ft_create_display(data);
+		data->fractal = 0;
+		ft_create_fractal(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 		mlx_hook(data->win, 17, 1L << 0, &ft_clear_memory, data);
 		mlx_hook(data->win, 2, 1L << 0, &ft_key_select, data);
@@ -48,12 +47,11 @@ int	main(int argc, char **argv)
 			if (!ft_isalpha(ft_lastchr(str[0])) \
 				&& ft_lastchr(str[1]) == 'i')
 			{
-				if (ft_init_display(data) == -1)
-					ft_clear_memory(data);
-				data->c.real = ft_atof(str[0]);
-				data->c.im = ft_atof(str[1]);
-				data->epa = 2;
-				ft_init_julia(data);
+				ft_create_display(data);
+				data->cons.real = ft_atof(str[0]);
+				data->cons.im = ft_atof(str[1]);
+				data->fractal = 1;
+				ft_create_fractal(data);
 				mlx_put_image_to_window(data->mlx, data->win, \
 										data->img.img, 0, 0);
 				mlx_hook(data->win, 17, 1L << 0, &ft_clear_memory, data);
@@ -61,7 +59,6 @@ int	main(int argc, char **argv)
 				mlx_mouse_hook(data->win, &ft_zoom, data);
 				mlx_expose_hook(data->win, &ft_put_image_to_window, data);
 				mlx_loop(data->mlx);
-				i = 0;
 			}
 			if (ft_lastchr(str[0]) == 'i')
 			{
@@ -69,6 +66,7 @@ int	main(int argc, char **argv)
 				mlx_destroy_image(data->mlx, data->img.img);
 				mlx_destroy_window(data->mlx, data->win);
 			}
+			i = 0;
 			while (str[i])
 			{
 				free(str[i]);
@@ -76,7 +74,7 @@ int	main(int argc, char **argv)
 			}
 			free(str);
 			ft_options_message();
-			ft_clear_memory(data);
+			ft_clear_memory(data, EXIT_ERROR);
 		}
 		else
 		{
@@ -90,12 +88,11 @@ int	main(int argc, char **argv)
 			&& ft_lastchr(argv[2]) != 'i' \
 			&& ft_lastchr(argv[3]) == 'i')
 	{
-		if (ft_init_display(data) == -1)
-			ft_clear_memory(data);
-		data->c.real = ft_atof(argv[2]);
-		data->c.im = ft_atof(argv[3]);
-		data->epa = 2;
-		ft_init_julia(data);
+		ft_create_display(data);
+		data->cons.real = ft_atof(argv[2]);
+		data->cons.im = ft_atof(argv[3]);
+		data->fractal = 1;
+		ft_create_fractal(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 		mlx_hook(data->win, 17, 1L << 0, &ft_clear_memory, data);
 		mlx_hook(data->win, 2, 1L << 0, &ft_key_select, data);
@@ -106,10 +103,9 @@ int	main(int argc, char **argv)
 	else if (!ft_strcmp(argv[1], "burning") \
 			|| !ft_strcmp(argv[1], "burning-ship"))
 	{
-		data->epa = 3;
-		if (ft_init_display(data) == -1)
-			ft_clear_memory(data);
-		ft_init_burning_ship(data);
+		data->fractal = 2;
+		ft_create_display(data);
+		ft_create_fractal(data);
 		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 		mlx_hook(data->win, 17, 1L << 0, &ft_clear_memory, data);
 		mlx_hook(data->win, 2, 1L << 0, &ft_key_select, data);

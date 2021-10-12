@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 19:23:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 12:12:45 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 13:48:54 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_data	*data;
 	char	**str;
-	int		i;
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (argc < 2)
@@ -66,13 +65,7 @@ int	main(int argc, char **argv)
 				mlx_destroy_image(data->mlx, data->img.img);
 				mlx_destroy_window(data->mlx, data->win);
 			}
-			i = 0;
-			while (str[i])
-			{
-				free(str[i]);
-				i++;
-			}
-			free(str);
+			ft_clear_split(str);
 			ft_options_message();
 			ft_clear_memory(data, EXIT_ERROR);
 		}

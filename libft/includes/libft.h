@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 09:42:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/09 16:58:12 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 13:14:53 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int		ft_iswhitespace(int c);
 int		ft_signal(char c);
 int		ft_lastchr(const char *str);
 size_t	ft_word_counter(const char *str);
+void	ft_clear_split(char **ptr);
 
 #endif

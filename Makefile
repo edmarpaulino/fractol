@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/12 15:21:01 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/12 18:04:09 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS			=	main.c \
 					ft_zoom.c \
 					ft_clear.c \
 					ft_messages.c \
-					ft_init.c
+					ft_init.c \
+					ft_att.c
 
 OBJ				=	./objects
 OBJS			=	$(addprefix $(OBJ)/,$(SRCS:.c=.o))
@@ -85,5 +86,8 @@ fclean: 		clean
 				make $@ -C $(FT_DIR)
 
 re:				fclean all
+
+norm:
+	norminette $(SRC) $(FT_DIR) $(INC_DIR)
 
 .PHONY:			all bonus fsan clean fclean re

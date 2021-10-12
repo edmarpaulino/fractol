@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:40:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 15:45:26 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 17:58:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 static void	ft_negative_move(double *min, double *max, t_data *data)
 {
-	*min -= 0.01 * (*max - *min);
-	*max -= 0.01 * (*max - *min);
+	*min -= 0.02 * (*max - *min);
+	*max -= 0.02 * (*max - *min);
 	ft_att_factor(data);
 	ft_draw_fractal(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
 static void	ft_positive_move(double *min, double *max, t_data *data)
 {
-	*min += 0.01 * (*max - *min);
-	*max += 0.01 * (*max - *min);
+	*min += 0.02 * (*max - *min);
+	*max += 0.02 * (*max - *min);
 	ft_att_factor(data);
 	ft_draw_fractal(data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
 int	ft_key_select(int keycode, t_data *data)
@@ -44,6 +46,7 @@ int	ft_key_select(int keycode, t_data *data)
 	{
 		data->color = (data->color + 1) % 6;
 		ft_draw_fractal(data);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	}
 	return (SUCCESS);
 }

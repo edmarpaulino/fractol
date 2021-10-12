@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:17:13 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 14:47:21 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:09:21 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_clear_memory(t_data *data, int status)
 {
+	if (data->cons.coor)
+		ft_clear_split(data->cons.coor);
 	if (data->img.img)
 		mlx_destroy_image(data->mlx, data->img.img);
 	if (data->win)

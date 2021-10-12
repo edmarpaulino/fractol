@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:23:40 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 16:34:29 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:20:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 static void	ft_get_coordenates(char **argv, t_data *data)
 {
-	char	**coor;
-
-	coor = ft_split(argv[2], ' ');
-	if (!ft_isalpha(ft_lastchr(coor[0])) && ft_lastchr(coor[1]) == 'i')
+	data->cons.coor = ft_split(argv[2], ' ');
+	if (!ft_isalpha(ft_lastchr(data->cons.coor[0])) && \
+		ft_lastchr(data->cons.coor[1]) == 'i')
 	{
-		data->cons.real = ft_atof(coor[0]);
-		data->cons.im = ft_atof(coor[1]);
+		data->cons.real = ft_atof(data->cons.coor[0]);
+		data->cons.im = ft_atof(data->cons.coor[1]);
 	}
 	else
 	{
-		ft_clear_split(coor);
-		ft_options_message();
+		ft_clear_split(data->cons.coor);
+		ft_error_message(INVALID_ARGS);
 		ft_clear_memory(data, EXIT_FAILURE);
 	}	
 }
@@ -52,9 +51,18 @@ void	ft_init(int argc, char **argv, t_data *data)
 		data->fractal = 2;
 	else
 	{
-		ft_options_message();
+		ft_error_message(INVALID_ARGS);
 		ft_clear_memory(data, EXIT_FAILURE);
 	}	
 	ft_create_display(data);
 	ft_create_fractal(data);
+}
+
+void	ft_init_pointers(t_data *data)
+{
+	data->mlx = NULL;
+	data->win = NULL;
+	data->cons.coor = NULL;
+	data->img.img = NULL;
+	data->img.addr = NULL;
 }

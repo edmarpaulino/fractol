@@ -6,15 +6,15 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 01:10:53 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 15:34:42 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:02:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_options_message(void)
+static void	ft_options_message(void)
 {
-	printf("Fractals (no case sensitive):\n");
+	printf("\nFractals (no case sensitive):\n");
 	printf("\t-Mandelbrot\n\t-Julia\n\t-Burning Ship\n");
 	printf("\vRun exemple:\n");
 	printf("./fractol mandelbrot\n");
@@ -23,4 +23,13 @@ void	ft_options_message(void)
 	printf("\vCall Julia fractal like this:\n");
 	printf("./fractol julia \"-0.428 -0.580i\"\n");
 	printf("./fractol julia -0.428 -0.580i\n");
+}
+
+void	ft_error_message(int error_type)
+{
+	if (error_type == FEW_ARGS)
+		ft_putendl_fd("== ERROR == Few arguments.", 2);
+	else if (error_type == INVALID_ARGS)
+		ft_putendl_fd("== ERROR == Invalid arguments.", 2);
+	ft_options_message();
 }

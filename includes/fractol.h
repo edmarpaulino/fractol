@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 15:56:25 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 18:17:15 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@
 # define SUCCESS 1
 # define ERROR -1
 
+# define FEW_ARGS 1
+# define INVALID_ARGS 2
+
 # define MAX_I 100
+# define SPEED 0.02
 
 # define MANDELBROT 0
 # define JULIA 1
@@ -86,6 +90,7 @@ typedef struct s_img
 
 typedef struct s_const
 {
+	char	**coor;
 	double	real;
 	double	im;
 }				t_const;
@@ -106,14 +111,17 @@ typedef struct s_data
 }				t_data;
 
 void	ft_init(int argc, char **argv, t_data *data);
+void	ft_init_pointers(t_data *data);
 void	ft_create_display(t_data *data);
 void	ft_create_fractal(t_data *data);
 void	ft_draw_fractal(t_data *data);
+int		ft_att_screen(t_data *data);
 void	ft_att_factor(t_data *data);
-int		ft_redraw(t_data *data);
+void	ft_att_z_value(t_data *data);
+void	ft_att_pixel(t_data *data, int color);
 int		ft_key_select(int keycode, t_data *data);
 int		ft_zoom(int keycode, int x, int y, t_data *data);
-void	ft_options_message(void);
+void	ft_error_message(int error_type);
 int		ft_clear_memory(t_data *data, int status);
 
 #endif

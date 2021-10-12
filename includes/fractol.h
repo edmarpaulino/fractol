@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/11 17:29:21 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 11:15:06 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,39 @@
 # include <string.h>
 # include <math.h>
 
+# define SUCCESS 1
+# define ERROR -1
+# define EXIT_SUCCESS 0
+# define EXIT_ERROR 1
+
+# define MAX_I 600
+
+# define MANDELBROT 0
+# define JULIA 1
+# define BURNING_SHIP 2
+
 # define ESC 65307
 # define UP_ARROW 65362
 # define DOWN_ARROW 65364
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
 # define C_KEY 99
-# define I_KEY 105
-# define O_KEY 111
-# define MAX_I 600
 
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
+
+# define ZOOM_IN 1
+# define ZOOM_OUT -1
+
+typedef struct s_zoom
+{
+	double	x_ratio;
+	double	y_ratio;
+	double	delta_re;
+	double	delta_im;
+	double	delta_delta_re;
+	double	delta_delta_im;
+}				t_zoom;
 
 typedef struct s_calc
 {
@@ -40,7 +61,7 @@ typedef struct s_calc
 	double	factor;
 	double	c;
 	double	z;
-	double	pow2;
+	double	z_pow2;
 }				t_calc;
 
 typedef struct s_img
@@ -54,6 +75,7 @@ typedef struct s_img
 	int		y;
 	int		i;
 	int		max_i;
+	int		pixel_color;
 }				t_img;
 
 typedef struct s_const
@@ -69,28 +91,28 @@ typedef struct s_data
 	int		height;
 	int		width;
 	char	*title;
-	int		epa;
-	int		ch_color;
+	char	fractal;
+	char	color;
 	t_img	img;
 	t_calc	real;
 	t_calc	im;
-	t_const	c;
+	t_const	cons;
 }				t_data;
 
-int				ft_init_display(t_data *data);
-int				ft_clear_memory(t_data *data);
-void			ft_options_message(void);
-void			ft_att_pixel(t_data *data, int color);
-void			ft_init_mandelbrot(t_data *data);
-void			ft_calc_mandelbrot(t_data *data);
-void			ft_init_julia(t_data *data);
-void			ft_calc_julia(t_data *data);
-void			ft_init_burning_ship(t_data *data);
-void			ft_calc_burning_ship(t_data *data);
-void			ft_burning_ship(t_data *data);
-unsigned int	ft_get_color(int n, int c);
-int				ft_put_image_to_window(t_data *data);
-int				ft_key_select(int keycode, t_data *data);
-int				ft_zoom(int keycode, int x, int y, t_data *data);
+void	ft_create_display(t_data *data);
+int		ft_clear_memory(t_data *data, int status);
+void	ft_options_message(void);
+void	ft_att_pixel(t_data *data);
+void	ft_init_mandelbrot(t_data *data);
+void	ft_calc_mandelbrot(t_data *data);
+void	ft_init_julia(t_data *data);
+void	ft_calc_julia(t_data *data);
+void	ft_init_burning_ship(t_data *data);
+void	ft_calc_burning_ship(t_data *data);
+void	ft_burning_ship(t_data *data);
+void	ft_get_color(t_data *data);
+int		ft_put_image_to_window(t_data *data);
+int		ft_key_select(int keycode, t_data *data);
+int		ft_zoom(int keycode, int x, int y, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/11 16:09:49 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/12 09:43:01 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,21 @@
 
 NAME			=	fractol
 
-SRC_DIR			=	./src
-OBJ_DIR			=	./obj
-INC_DIR			=	./includes
-LIB_DIR			=	./lib
+SRC				=	./sources
+SRCS			=	main.c \
+					ft_draw.c \
+					ft_calc.c \
+					ft_messages.c \
+					ft_init.c \
+					ft_clear.c \
+					ft_move.c
 
-SYS_CAL			=	-l Xext -l X11 -l m
+OBJ				=	./objects
+OBJS			=	$(addprefix $(OBJ)/,$(SRCS:.c=.o))
+
+INC_DIR			=	./includes
+
+SYS_CAL			=	-l Xext -l X11 -l m -l bsd
 
 MLX_DIR			=	./minilibx
 
@@ -39,25 +48,15 @@ CFLAGS			=	-Wall -Wextra -Werror -O3
 
 LIBS			=	$(MLX_CAL) $(FT_CAL) $(SYS_CAL)
 
-INCS			=	-I $(MLX_DIR) -I $(INC_DIR) -I $(FT_DIR)
+INCS			=	-I $(MLX_DIR) -I $(INC_DIR) -I $(FT_DIR)/includes
 
 SAN				=	-g3 -fsanitize=address
-
-SRCS			=	main.c \
-					ft_draw.c \
-					ft_calc.c \
-					ft_messages.c \
-					ft_init.c \
-					ft_clear.c \
-					ft_move.c
-
-OBJS			=	$(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 RM				=	rm -rf
 
 DIR_GUARD		=	mkdir -p $(@D)
 
-$(OBJ_DIR)/%.o:	$(SRC_DIR)/%.c
+$(OBJ)/%.o:	$(SRC)/%.c
 				$(DIR_GUARD)
 				$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
@@ -76,7 +75,7 @@ fsan:			$(OBJS)
 				$(CC) $(SAN) $(CFLAGS) $(OBJS) $(LIBS) $(INCS) -o $(NAME)
 
 clean:
-				$(RM) $(OBJ_DIR)
+				$(RM) $(OBJ)
 				make $@ -C $(MLX_DIR)
 				make $@ -C $(FT_DIR)
 

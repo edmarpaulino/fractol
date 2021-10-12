@@ -6,13 +6,13 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/07 16:04:57 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/11 14:50:59 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/12 09:14:49 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	libft.a
 
-SRC				=	./src
+SRC				=	./sources
 SRCS			=	ft_isalpha.c \
 					ft_isdigit.c \
 					ft_isalnum.c \
@@ -67,15 +67,17 @@ SRCS			=	ft_isalpha.c \
 					ft_lastchr.c \
 					ft_word_counter.c
 
-INCS			=	-I ../includes
+INCS			=	-I ./includes
 
-OBJ				=	./obj
+OBJ				=	./objects
 OBJS			=	$(addprefix $(OBJ)/,$(SRCS:.c=.o))
 
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 
-MAIN			=	main.c
+RM				=	rm -rf
+
+AR				=	ar rcs
 
 .DEFAULT_GOAL	=	all
 
@@ -86,13 +88,13 @@ $(OBJ)/%.o:	$(SRC)/%.c
 			$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(NAME):	$(OBJS)
-			ar crs $(NAME) $(OBJ)/*.o
+			$(AR) $(NAME) $(OBJ)/*.o
 
 clean:
-			rm -rf $(OBJ)
+			$(RM) $(OBJ)
 
 fclean:		clean
-			rm -f $(NAME)
+			$(RM) $(NAME)
 
 re:			fclean all
 

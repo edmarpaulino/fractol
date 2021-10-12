@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/26 11:32:04 by edpaulin          #+#    #+#              #
-#    Updated: 2021/10/12 09:43:01 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/10/12 12:17:18 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,12 @@ NAME			=	fractol
 
 SRC				=	./sources
 SRCS			=	main.c \
+					ft_create.c \
 					ft_draw.c \
-					ft_calc.c \
-					ft_messages.c \
-					ft_init.c \
+					ft_move.c \
+					ft_zoom.c \
 					ft_clear.c \
-					ft_move.c
+					ft_messages.c
 
 OBJ				=	./objects
 OBJS			=	$(addprefix $(OBJ)/,$(SRCS:.c=.o))

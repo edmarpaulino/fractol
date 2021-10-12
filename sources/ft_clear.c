@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:17:13 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 10:17:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 12:26:38 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ int	ft_clear_memory(t_data *data, int status)
 		mlx_destroy_display(data->mlx);
 	if (data)
 		free(data);
+	if (status != EXIT_ERROR && status != EXIT_SUCCESS)
+		status = EXIT_SUCCESS;
 	exit(status);
 }

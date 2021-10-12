@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:10:26 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 11:26:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/12 12:21:05 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	ft_zoom_calc(t_data *data, int x, int y, char direction)
 	zoom.y_ratio = (double)y / data->height;
 	zoom.delta_re = data->real.max - data->real.min;
 	zoom.delta_im = data->im.max - data->im.min;
+	zoom.delta_delta_re = 0;
+	zoom.delta_delta_im = 0;
 	if (direction == ZOOM_IN)
 	{
 		zoom.delta_delta_re = ((1.0 / 1.05) * zoom.delta_re) - zoom.delta_re;

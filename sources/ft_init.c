@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:23:40 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 15:30:59 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:57:13 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	ft_init(int argc, char **argv, t_data *data)
 	{
 		data->fractal = 1;
 		data->cons.real = ft_atof(argv[2]);
-		data->cons.im = -ft_atof(argv[3]);
+		data->cons.im = ft_atof(argv[3]);
 	}
 	else if (!ft_strcmp(argv[1], "burning-ship"))
 		data->fractal = 2;

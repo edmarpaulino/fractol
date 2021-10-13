@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:23:40 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 10:05:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 10:56:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_check_individual_param(const char *s)
 
 	signal = 0;
 	dot = 0;
-	while (*s && *s != 'i')
+	while (*s)
 	{
 		if (*s == '-' || *s == '+')
 			signal++;
@@ -38,10 +38,11 @@ static int	ft_check_individual_param(const char *s)
 	return (TRUE);
 }
 
-static int	ft_check_params(const char *p1, const char *p2)
+static int	ft_check_params(const char *p1, char *p2)
 {
 	if (ft_lastchr(p1) == 'i' || ft_lastchr(p2) != 'i')
 		return (FALSE);
+	p2[ft_strlen(p2) - 1] = '\0';
 	return (ft_check_individual_param(p1) && ft_check_individual_param(p2));
 }
 

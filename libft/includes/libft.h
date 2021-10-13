@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/07 09:42:29 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 13:14:53 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 10:25:20 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 /*
 *	content:	The data contained in the element. The void * allows to store 

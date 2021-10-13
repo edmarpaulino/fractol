@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 09:19:43 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 11:50:04 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+
+# define ERROR_1 "./messages/error_journey_without_a_destination.txt"
+# define ERROR_2 "./messages/error._invalid_coordinates.txt"
+# define HELP "./messages/help.txt"
 
 # define SUCCESS 1
 # define ERROR -1

@@ -1,0 +1,86 @@
+  _________________
+ /                 \
+|     Hi human!     |
+ \___________ _____/
+             V
+        _..._
+      .'     '.      _
+     /    .-""-\   _/ \
+   .-|   /:.   |  |   |
+   |  \  |:.   /.-'-./
+   | .-'-;:__.'    =/
+   .'=  *=|42SP _.='
+  /   _.  |    ;
+ ;-.-'|    \   |
+/   | \    _\  _\
+\__/'._;.  ==' ==\
+         \    \   |
+         /    /   /
+         /-._/-._/
+         \   `\  \
+          `-._/._/
+
+I came from a long journey to give you some tips!
+
+Here are the fractal sets available for you to explore:
+-Mandelbrot
+-Julia
+-Burning Ship
+(Here's a little secret: I like to call them "worlds".)
+
+To explore them, just run one of the commands below according to which world
+you want to explore:
+./fractol mandelbrot
+./fractol julia (need more arguments - more examples below)
+./fractol burning-ship
+
+Oh, I almost forgot to tell you, they are not case sensitive, so if you type an
+uppercase letter here and a lowercase letter there, don't worry, our onboard
+computer will adjust the destination name correctly, but that's only in this
+case, in case you miss the name our computer will crash.
+
+         _______
+        |.-----.|
+        ||x . x||
+        ||_.-._||
+        `--)-(--`
+       __[=== o]___
+      |:::::::::::|\
+      `-=========-`()
+
+To explore Julia's world our on-board computer will need a few more
+coordinates, which you can pass as a single string or as two strings, keep in
+mind that any coordinates passed in will be ignored by our on-board computer,
+and if so pass a wrong coordinate our dear computer will crash too.
+Coordinates examples:
+./fractol julia "-0.428 -0.580i"
+./fractol julia -0.428 -0.580i
+
+After setting the coordinates correctly and hitting the enter button, your life
+will not be the same, you will discover beautiful fractals!
+For your experience to be even more complete, follow some commands for you to
+navigate the ship in this new world full of mysteries:
+
+-	The arrows will make the ship move in the desired direction (up, down,
+	left, right).
+
+-	The mouse scroll will make you accelerate or reverse on the ship, where
+	scroll up is to accelerate and scroll down is to reverse.
+
+-	You may want to accelerate in a specific direction, without having to
+	control with the arrows, for this our latest generation ship has a feature
+	where you just place the mouse arrow on the desired direction and
+	accelerate and the ship will move to that direction. position.
+
+-	One of the most important parts of any trip is to enjoy all the possible
+	landscapes, and for that we have the "c" key where you can change the world
+	around you to your liking (unfortunately limited to 6 options).
+
+-	But there is always a time when we want to start a new journey or just go
+	home and look at the stars, and for that we have a solution dear human
+	friend, the "ESC" button, it will make your journey end (only press if you
+	are sure of that).
+
+So that's it my human friend, now it all depends on you and your curiosity for
+the unknown!
+Have a good trip and see you next time!

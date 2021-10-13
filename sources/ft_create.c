@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 17:55:38 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:37:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	ft_create_limits(t_data *data, double x_min, \
 		data->im.min = -data->im.min;
 		data->im.max = -data->im.max;
 	}
+	data->img.max_i = MAX_I;
 }
 
 void	ft_create_display(t_data *data)
@@ -65,10 +66,9 @@ void	ft_create_fractal(t_data *data)
 		ft_create_limits(data, -2.5, 1.5, -1.5);
 	else if (data->fractal == JULIA)
 		ft_create_limits(data, -2.0, 2.0, -1.5);
-	if (data->fractal == BURNING_SHIP)
+	else
 		ft_create_limits(data, -2.5, 2.0, -1.4);
 	ft_att_factor(data);
-	data->img.max_i = MAX_I;
 	ft_draw_fractal(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

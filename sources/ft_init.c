@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:23:40 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 14:21:34 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:30:06 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_init(int argc, char **argv, t_data *data)
 		data->fractal = 1;
 		ft_get_coordenates(argv, data);
 	}
-	else if (!ft_strcmp(argv[1], "julia") && argc >= 4 \
+	else if (!ft_strcmp(argv[1], "julia") && argc > 3 \
 			&& ft_check_params(argv[2], argv[3]))
 	{
 		data->fractal = 1;
@@ -103,4 +103,6 @@ void	ft_init_pointers(t_data *data)
 	data->cons.coor = NULL;
 	data->img.img = NULL;
 	data->img.addr = NULL;
+	data->cons.real = 0.0;
+	data->cons.im = 0.0;
 }

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 19:29:22 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/08 23:57:00 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:40:53 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ double	ft_atof(const char *str)
 
 	nbr = 0;
 	n = 0;
+	signal = 1;
 	while (ft_iswhitespace(*str))
 		++str;
 	if (*str == '+' || *str == '-')

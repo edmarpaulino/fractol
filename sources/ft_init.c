@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 14:23:40 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 10:56:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:21:34 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,13 @@ static int	ft_check_params(const char *p1, char *p2)
 
 static void	ft_get_coordenates(char **argv, t_data *data)
 {
-	data->cons.coor = ft_split(argv[2], ' ');
+	if (ft_word_counter(argv[2]) > 1)
+		data->cons.coor = ft_split(argv[2], ' ');
+	else
+	{
+		ft_error_message(INVALID_ARGS);
+		ft_clear_memory(data, EXIT_FAILURE);
+	}
 	if (ft_check_params(data->cons.coor[0], data->cons.coor[1]))
 	{
 		data->cons.real = ft_atof(data->cons.coor[0]);
@@ -72,7 +78,7 @@ void	ft_init(int argc, char **argv, t_data *data)
 		data->fractal = 1;
 		ft_get_coordenates(argv, data);
 	}
-	else if (!ft_strcmp(argv[1], "julia") && argc > 3 \
+	else if (!ft_strcmp(argv[1], "julia") && argc >= 4 \
 			&& ft_check_params(argv[2], argv[3]))
 	{
 		data->fractal = 1;

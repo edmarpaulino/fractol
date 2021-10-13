@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:43:22 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 10:45:32 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 12:14:01 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 *	NULL: nothing else to read or an error occurred.
 */
 
-int	is_line(char *buffer)
+static int	is_line(char *buffer)
 {
 	while (*buffer)
 	{
@@ -35,7 +35,7 @@ int	is_line(char *buffer)
 	return (0);
 }
 
-void	att_buffer(char **static_buffer, char **buffer)
+static void	att_buffer(char **static_buffer, char **buffer)
 {
 	char	*temp;
 
@@ -44,7 +44,7 @@ void	att_buffer(char **static_buffer, char **buffer)
 	free(temp);
 }
 
-char	*get_line(char **static_buffer, char **line)
+static char	*get_line(char **static_buffer, char **line)
 {
 	size_t	line_len;
 	char	*new_static_buffer;
@@ -71,7 +71,7 @@ char	*get_line(char **static_buffer, char **line)
 	return (*line);
 }
 
-char	*read_file(int fd, char **buffer)
+static char	*read_file(int fd, char **buffer)
 {
 	static char	*static_buffer[OPEN_MAX];
 	char		*line;

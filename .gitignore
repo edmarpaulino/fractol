@@ -4,3 +4,5 @@
 **.out
 **.gch
 *.vscode
+**mlx-test
+**fractol

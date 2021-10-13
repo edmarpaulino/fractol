@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/09 15:43:19 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 10:47:32 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 12:14:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@
 # include <stdlib.h>
 # include <limits.h>
 
-int		is_line(char *buffer);
-void	att_buffer(char **static_buffer, char **buffer);
-char	*get_line(char **static_buffer, char **line);
-char	*read_file(int fd, char **buffer);
 char	*get_next_line(int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 18:17:15 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 09:19:43 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@
 # define SUCCESS 1
 # define ERROR -1
 
+# define TRUE 1
+# define FALSE 0
+
 # define FEW_ARGS 1
 # define INVALID_ARGS 2
 
-# define MAX_I 100
+# define MAX_I 300
 # define SPEED 0.02
 
 # define MANDELBROT 0

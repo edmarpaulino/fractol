@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 15:05:02 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 14:53:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:19:24 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,7 @@ static void	ft_create_limits(t_data *data, double x_min, \
 	data->im.max = data->im.min + \
 				(data->real.max - data->real.min) * \
 				data->height / data->width;
-	if (data->fractal == JULIA)
-	{
-		data->real.min = -data->real.min;
-		data->real.max = -data->real.max;
-	}
-	else if (data->fractal == BURNING_SHIP)
+	 if (data->fractal == BURNING_SHIP || data->fractal == JULIA)
 	{
 		data->im.min = -data->im.min;
 		data->im.max = -data->im.max;

@@ -63,15 +63,15 @@ The project
 
 ### Mandelbrot set
 
-<img src="images/mandelbrot-set.png" alt="edpaulin's mandelbrot set"/>
+<p align=center><img src="images/mandelbrot-set.png" alt="edpaulin's mandelbrot set"/></p>
 
 ### Julia set -0.428 -0.580i
 
-<img src="images/julia-set_-0.428_-0.580i.png" alt="edpaulin's julia set"/>
+<p align=center><img src="images/julia-set_-0.428_-0.580i.png" alt="edpaulin's julia set"/></p>
 
 ### Burning-ship set
 
-<img src="images/burning-ship.png" alt="edpaulin's burning-ship set"/>
+<p align=center><img src="images/burning-ship.png" alt="edpaulin's burning-ship set"/></p>
 
 
 ---

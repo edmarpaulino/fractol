@@ -28,16 +28,16 @@ Mandatory
 </h3>
 
 > <i>This project’s goal is to create a small fractal exploration program. Start by seeing what a fractal is.
-The constraints are as follows:
-• Your software should offer the Julia set and the Mandelbrot set.
+The constraints are as follows:<br>
+• Your software should offer the Julia set and the Mandelbrot set.<br>
 • The mouse wheel zooms in and out, almost infinitely (within the limits of the
-computer). This is the very principle of fractals.
-• You must use at least a few colors to show the depth of each fractal. It’s even better if you hack away on psychedelic effects.
-• A parameter is passed on the command line to define what type of fractal will be viewed. If no parameter is provided, or if the parameter is invalid, the program displays a list of available parameters and exits properly.
-• More parameters must be used for fractal parameters or ignored.
-• You must be able to create different Julia set with the parameters of the program.
-As for the graphic representation:
-• ESC will exit the program.
+computer). This is the very principle of fractals.<br>
+• You must use at least a few colors to show the depth of each fractal. It’s even better if you hack away on psychedelic effects.<br>
+• A parameter is passed on the command line to define what type of fractal will be viewed. If no parameter is provided, or if the parameter is invalid, the program displays a list of available parameters and exits properly.<br>
+• More parameters must be used for fractal parameters or ignored.<br>
+• You must be able to create different Julia set with the parameters of the program.<br><br>
+As for the graphic representation:<br>
+• ESC will exit the program.<br>
 • The use of images of the minilibX is strongly recommended.</i>
 
 <p align=center>
@@ -48,11 +48,11 @@ As for the graphic representation:
 Bonus
 </h3>
 
-> <i>Here are some interesting ideas for the bonuses.
+> <i>Here are some interesting ideas for the bonuses.<br>
 • One more different fractal (there are more than a hundred different types of fractals
-referenced online).
-• The zoom follows the actual mouse position.
-• In addition to the zoom: moving with the arrows.
+referenced online).<br>
+• The zoom follows the actual mouse position.<br>
+• In addition to the zoom: moving with the arrows.<br>
 • Make the color range shift.</i>
 
 ---
@@ -81,7 +81,8 @@ Usage
 
 ### Requirements
 
-`libft` requires *clang* compiler and some standard libraries.
+This project requires *gcc* compiler and the packages: *xorg libxext-dev zlib1g-dev*.<br>
+It uses the [`minilibx-linux`](https://github.com/42Paris/minilibx-linux) librarie (already included).
 
 ### Instructions
 

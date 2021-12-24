@@ -81,7 +81,7 @@ Usage
 
 ### Requirements
 
-This project requires *gcc* compiler and the packages: *xorg libxext-dev zlib1g-dev*.<br>
+This project requires *gcc* compiler and the packages: *xorg libxext-dev zlib1g-dev libbsd-dev*.<br>
 It uses the [`minilibx-linux`](https://github.com/42Paris/minilibx-linux) librarie (already included).
 
 ### Instructions

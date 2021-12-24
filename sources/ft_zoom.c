@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 11:10:26 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 17:25:15 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/10/13 18:16:22 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ static void	ft_zoom_calc(t_data *data, int x, int y, char direction)
 	data->real.max += (zoom.delta_delta_re * (1.0 - zoom.x_ratio));
 	data->im.max += (zoom.delta_delta_im * zoom.y_ratio);
 	data->im.min -= (zoom.delta_delta_im * (1.0 - zoom.y_ratio));
-	data->real.factor = (data->real.max - data->real.min) / (data->width - 1);
-	data->im.factor = (data->im.max - data->im.min) / (data->height - 1);
+	ft_att_factor(data);
 }
 
 int	ft_zoom(int keycode, int x, int y, t_data *data)

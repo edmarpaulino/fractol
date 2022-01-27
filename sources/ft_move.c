@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:40:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/12 17:58:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:42:27 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_key_select(int keycode, t_data *data)
 		ft_negative_move(&data->real.min, &data->real.max, data);
 	else if (keycode == RIGHT_ARROW)
 		ft_positive_move(&data->real.min, &data->real.max, data);
-	else if (keycode == C_KEY)
+	else if (keycode == C_KEY || keycode == C_KEY_WSL)
 	{
 		data->color = (data->color + 1) % 6;
 		ft_draw_fractal(data);

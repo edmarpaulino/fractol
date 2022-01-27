@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 13:54:46 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/10/13 11:50:04 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/27 19:41:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
 # define C_KEY 99
+# define C_KEY_WSL 106
 
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
